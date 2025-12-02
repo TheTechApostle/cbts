@@ -368,16 +368,16 @@ API_URL = "https://router.huggingface.co/valurank/MiniLM-L6-Keyword-Extraction/p
 headers = {"Authorization": f"Bearer {HF_TOKEN}"}
 
 # Quick test function
-def test_connection():
-    response = requests.post(API_URL, headers=headers, json={"inputs": "test"})
-    try:
-        print("Status:", response.status_code)
-        print("Response:", response.text)
-    except Exception as e:
-        print("Error:", e, response.text)
+# def test_connection():
+#     response = requests.post(API_URL, headers=headers, json={"inputs": "test"})
+#     try:
+#         print("Status:", response.status_code)
+#         print("Response:", response.text)
+#     except Exception as e:
+#         print("Error:", e, response.text)
 
-# Run the test
-test_connection()
+# # Run the test
+# test_connection()
 
 API_URL = "https://api-inference.huggingface.co/models/valurank/MiniLM-L6-Keyword-Extraction"
 headers = {
