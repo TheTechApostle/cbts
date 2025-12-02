@@ -1,0 +1,378 @@
+{% load django_browser_reload %}
+{% django_browser_reload_script %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Heores CBT SYSTEM</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <style>
+    /* === Navbar Styling === */
+    .navbar {
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.85);
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar-brand h2 {
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #0d6efd;
+    }
+
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      color: #333 !important;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .jumbotron {
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.z-2 {
+  z-index: 2;
+}
+
+.input-group .form-control:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.btn-primary {
+  background: #0d6efd;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+  background: #084298;
+  transform: translateY(-2px);
+}
+
+.animate__animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: #0d6efd !important;
+    }
+
+    .navbar-nav .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #0d6efd;
+      transition: width 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Dropdown */
+    .dropdown-menu {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dropdown-item:hover {
+      background-color: #f8f9fa;
+      color: #0d6efd;
+    }
+
+    /* Sticky effect on scroll */
+    .navbar.scrolled {
+      background-color: #fff !important;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* === Hero Section === */
+    .hero {
+      position: relative;
+      background: linear-gradient(rgba(13, 110, 253, 0.7), rgba(0, 0, 0, 0.6)),
+        url('https://images.unsplash.com/photo-1596495577886-d920f1fb7238?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: #fff;
+      height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      animation: fadeInDown 1s ease;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero .btn {
+      margin-top: 2rem;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .hero .btn:hover {
+      background-color: #fff;
+      color: #0d6efd;
+      transform: translateY(-3px);
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Hero Text */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+    }
+    .hover-underline {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+.hover-underline:hover {
+  color: #f8f9fa !important;
+}
+
+  </style>
+  <style>
+/* 💻 Default (Desktop) */
+.brand-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.brand-title {
+  font-size: 16px;
+}
+
+.brand-subtitle {
+  margin-top: -12px;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  margin-left: 60px;
+}
+
+/* 📱 Mobile view adjustments */
+@media (max-width: 768px) {
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 6px;
+  }
+
+  .brand-title {
+    font-size: 14px;
+  }
+
+  .brand-subtitle {
+    margin-top: -8px;
+    font-size: 0.75rem;
+    margin-left: 45px;
+  }
+}
+</style>
+<style>
+/* ✅ Subtle improvements for small screens */
+@media (max-width: 576px) {
+  .container-fluid.bg-dark small {
+    font-size: 0.8rem;
+  }
+  .container-fluid.bg-dark i {
+    font-size: 0.85rem;
+  }
+  .container-fluid.bg-dark a {
+    font-size: 0.85rem;
+  }
+}
+</style>
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <!-- ======= Topbar Start ======= -->
+    <!-- Top Bar -->
+<div class="container-fluid bg-dark text-white py-2 px-lg-5">
+  <div class="row align-items-center text-center text-md-start">
+    
+    <!-- 📞 Left: Contact Info -->
+    <div class="col-md-6 d-flex flex-wrap justify-content-center justify-content-md-start align-items-center gap-3 mb-2 mb-md-0">
+      <small class="d-flex align-items-center">
+        <i class="fa fa-phone-alt me-2 mr-2"></i> +234 706 707 1427
+      </small>
+      <small class="d-flex align-items-center">
+        <i class="fa fa-envelope me-2 mr-2"></i> heroesgroupofschools053@gmail.com
+      </small>
+    </div>
+
+    <!-- 🔗 Right: Quick Links -->
+    <div class="col-md-6 d-flex flex-wrap justify-content-center justify-content-md-end align-items-center gap-3">
+      <a href="{% url 'LoginUser' %}" class="text-white text-decoration-none fw-semibold d-flex align-items-center">
+        <i class="fa fa-laptop me-2 mr-2"></i> CBT Portal
+      </a>
+
+      <!-- 🌐 Optional: Social Media Links -->
+      {% comment %} <div class="d-flex gap-3">
+        <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+      </div> {% endcomment %}
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!-- ======= Topbar End ======= -->
+
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
+            <a href="#" class="navbar-brand d-flex flex-column align-items-start ml-lg-3">
+                <div class="d-flex align-items-center">
+                    <img src="{{ getLogo.LogoImage.url }}" alt="Logo" 
+                        class="brand-logo">
+                    <h6 class="m-0 text-uppercase text-primary fw-bold brand-title">
+                        {{ getTitle.name }}
+                    </h6>
+                </div>
+                <small class="text-secondary fst-italic brand-subtitle">
+                    Computer Based Test System
+                </small>
+            </a>
+
+
+
+
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="{% url 'MyHome' %}" class="nav-item nav-link active" style='font-size:16px'>Home</a>
+                    <a href="" class="nav-item nav-link" style='font-size:16px'>About</a>
+                    {% comment %} <a href="" class="nav-item nav-link" style='font-size:16px'>E-Library</a> {% endcomment %}
+                    <a href="{% url 'register_student' %}" class="nav-item nav-link" style='font-size:16px'>
+                     Student Enroll
+                    </a>
+                    <a href="{% url 'lecture_list' %}" class="nav-item nav-link" style='font-size:16px'>
+                     Lecturer Note 
+                    </a>
+                    <a href="{% url 'student_dashboard' %}" class="nav-item nav-link" style="font-size:16px">
+                      E-Learning
+                    </a>
+
+
+                    {% comment %} <a href="{% url 'register_teacher' %}" class="nav-item nav-link" style='font-size:16px'>
+                     Teacher's Enroll
+                    </a> {% endcomment %}
+                    <a href="{% url 'CheckResult' %}" class="nav-item nav-link" style='font-size:16px'>Check Result</a>
+                </div>
+                <a href="{% url 'LoginUser' %}" style="border-radius:20px 20px;" class="btn btn-secondary py-2 px-4  d-lg-block">Login</a>
+                
+  
+
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+    <script>
+  const applyLazy = (img) => {
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", "lazy");
+    }
+  };
+
+  // Apply to existing images
+  document.querySelectorAll("img").forEach(applyLazy);
+
+  // Watch for new images added to the DOM
+  const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+      mutation.addedNodes.forEach(node => {
+        if (node.tagName === "IMG") applyLazy(node);
+      });
+    });
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+</script>

@@ -1,0 +1,503 @@
+{% load static %}
+{% include 'header.html' %}
+
+
+    <!-- Header Start -->
+   <!-- ======= Hero Section Start ======= -->
+<div class="jumbotron jumbotron-fluid position-relative text-center text-white" 
+     style="background: url('{% static "img/courses-2.jpg" %}') center center/cover no-repeat; margin-bottom: 90px;">
+  
+  <!-- Overlay -->
+  <div class="position-absolute top-0 start-0 w-100 h-100" 
+       style="background: rgba(0, 0, 0, 0.55); z-index: 1;"></div>
+
+  <!-- Content -->
+  <div class="container position-relative z-2 my-5 py-5">
+    <h5 class="fw-light text-uppercase mb-3 animate__animated animate__fadeInDown"
+        style="
+        background: linear-gradient(90deg, #339ad6ff, #a05dbbff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 600;
+        letter-spacing: 2px;
+        ">
+    Welcome to {{getTitle.name}}
+    </h5>
+
+    <h1 class="text-white display-3 fw-bold mb-3 animate__animated animate__fadeInUp">
+      Learn From Anywhere, Anytime
+    </h1>
+    <p class="lead text-light mb-5 animate__animated animate__fadeInUp animate__delay-1s">
+      Empowering students through digital education and online assessments.
+    </p>
+
+    <!-- Search Box -->
+    <div class="mx-auto" style="max-width: 650px;">
+      <div class="input-group input-group-lg shadow-lg rounded-pill overflow-hidden">
+        <!-- Dropdown -->
+        <button class="btn btn-outline-light bg-white text-dark px-4 dropdown-toggle" 
+                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Subject
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Mathematics</a></li>
+          <li><a class="dropdown-item" href="#">Science</a></li>
+          <li><a class="dropdown-item" href="#">English</a></li>
+        </ul>
+
+        <!-- Input -->
+        <input type="text" class="form-control border-0" placeholder="Search subjects, classes or exams...">
+
+        <!-- Button -->
+        <button class="btn btn-primary px-5">
+          <i class="fa fa-search"></i> Search
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ======= Hero Section End ======= -->
+
+    <!-- Header End -->
+
+
+    <!-- About Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="row">
+            <!-- Left Image Section -->
+            <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100 rounded shadow-lg" 
+                         src="{{ GetAboutSchoolSec.aboutImage.url}}" 
+                         alt="About Heroes CBT" 
+                         style="object-fit: cover; border: 4px solid #fff;">
+                </div>
+            </div>
+
+            <!-- Right Content Section -->
+            <div class="col-lg-7">
+                <div class="section-title position-relative mb-4">
+                    <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">About Us</h6>
+                    <h2 class="display-5">{{AboutSchool.aboutus }}</h2>
+                </div>
+                <p class="text-justified">
+                    At <strong>{{getTitle.name}}</strong>, our <strong>Computer-Based Test (CBT) System</strong> 
+                    is designed to redefine how students learn and take exams. We combine digital innovation, 
+                    academic excellence, and user-friendly design to provide a modern testing experience that prepares 
+                    students for national and global examinations.  
+                </p>
+                <p>
+                    Our CBT platform offers secure assessments, instant grading, and detailed feedback to help both 
+                    students and teachers monitor progress effectively. We are committed to shaping the next generation 
+                    of smart learners who are confident, competitive, and tech-savvy.
+                </p>
+
+                <div class="row pt-3 mx-0">
+                    <div class="col-3 px-0">
+                        <div class="bg-success text-center p-4 rounded-start">
+                            <h1 class="text-white" data-toggle="counter-up">{{courseCount}}</h1>
+                            <h6 class="text-uppercase text-white">
+                                Available<span class="d-block">Subjects</span>
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="col-3 px-0">
+                        <div class="bg-primary text-center p-4">
+                            <h1 class="text-white" data-toggle="counter-up">{{QuestionCount}}</h1>
+                            <h6 class="text-uppercase text-white">
+                                Practice<span class="d-block">Questions</span>
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="col-3 px-0">
+                        <div class="bg-secondary text-center p-4">
+                            <h1 class="text-white" data-toggle="counter-up">{{ TeacherCount }}</h1>
+                            <h6 class="text-uppercase text-white">
+                                Experienced<span class="d-block">Instructors</span>
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="col-3 px-0">
+                        <div class="bg-warning text-center p-4 rounded-end">
+                            <h1 class="text-white" data-toggle="counter-up">{{ StudentCount }}</h1>
+                            <h6 class="text-uppercase text-white">
+                                Active<span class="d-block">Students</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- About End -->
+
+
+    <!-- Feature Start -->
+<div class="container-fluid bg-image" style="margin: 90px 0;">
+    <div class="container">
+        <div class="row">
+            <!-- Left content section -->
+            <div class="col-lg-7 my-5 pt-5 pb-lg-5">
+                <div class="section-title position-relative mb-4">
+                    <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Why Choose Heroes CBT?</h6>
+                    <h1 class="display-4">Empowering Students Through Smart Learning</h1>
+                </div>
+                <p class="mb-4 pb-2">
+                   <b>{{getTitle.name }}</b> CBT System provides a modern, interactive, and reliable testing platform 
+                    designed to help students build confidence and improve academic performance. 
+                    Our platform ensures fairness, accuracy, and a real exam-like experience.
+                </p>
+
+                <div class="d-flex mb-3">
+                    <div class="btn-icon bg-primary mr-4">
+                        <i class="fa fa-2x fa-laptop text-white"></i>
+                    </div>
+                    <div class="mt-n1">
+                        <h4>Smart Computer-Based Testing</h4>
+                        <p>
+                            Experience real-time, technology-driven assessments that promote digital literacy 
+                            and better exam preparation for students in secondary schools.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="d-flex mb-3">
+                    <div class="btn-icon bg-secondary mr-4">
+                        <i class="fa fa-2x fa-user-shield text-white"></i>
+                    </div>
+                    <div class="mt-n1">
+                        <h4>Secure and Reliable Platform</h4>
+                        <p>
+                            Our CBT system ensures data protection and fairness in every test through 
+                            smart monitoring and random question distribution.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    <div class="btn-icon bg-warning mr-4">
+                        <i class="fa fa-2x fa-chart-line text-white"></i>
+                    </div>
+                    <div class="mt-n1">
+                        <h4>Instant Performance Reports</h4>
+                        <p class="m-0">
+                            Get instant feedback, scores, and performance analytics to track students’ progress 
+                            and identify areas for improvement.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right image section -->
+            <div class="col-lg-5" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100 rounded shadow-lg" 
+                         src="{{ AboutSchool.aboutImage.url  }}" 
+                         alt="CBT Feature" 
+                         style="object-fit: cover; border: 4px solid #fff;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Feature Start -->
+
+
+    <!-- Courses Start -->
+    <div class="container-fluid px-0 py-5">
+        <div class="row mx-0 justify-content-center pt-5">
+            <div class="col-lg-6">
+                <div class="section-title text-center position-relative mb-4">
+                    <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">{{getTitle.name}} Gallery </h6>
+                    <h1 class="display-4">Explore  Our Creative Gallery</h1>
+                </div>
+            </div>
+        </div>
+        <div class="owl-carousel courses-carousel">
+            {% for slide in slides %}
+                <div class="courses-item position-relative">
+                    <img class="img-fluid" src="{{ slide.image.url }}" alt="{{ slide.title }}">
+                    <div class="courses-text">
+                        {% comment %} <h4 class="text-center text-white px-3">{{ slide.title }}</h4> {% endcomment %}
+                        <div class="border-top w-100 mt-3">
+                            <div class="d-flex justify-content-between p-4">
+                                <h4 class="text-center text-white px-3">{{ slide.title }}</h4>
+                                {% comment %} <span class="text-white"><i class="fa fa-user mr-2"></i>Admin</span>
+                                <span class="text-white"><i class="fa fa-calendar mr-2"></i>{{ slide.created_at|date:"M d, Y" }}</span> {% endcomment %}
+                            </div>
+                        </div>
+                        <div class="w-100 bg-white text-center p-4">
+                            <p class="mb-2">{{ slide.description|truncatewords:15 }}</p>
+                            <a class="btn btn-primary" href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="text-center text-muted">No slider images available.</p>
+            {% endfor %}
+        </div>
+
+        {% comment %} <div class="row justify-content-center bg-image mx-0 mb-5">
+            <div class="col-lg-6 py-5">
+                <div class="bg-white p-5 my-5">
+                    <h1 class="text-center mb-4">30% Off For New Students</h1>
+                    <form>
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="padding: 30px 20px;">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="padding: 30px 20px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <select class="custom-select bg-light border-0 px-3" style="height: 60px;">
+                                        <option selected>Select A courses</option>
+                                        <option value="1">courses 1</option>
+                                        <option value="2">courses 1</option>
+                                        <option value="3">courses 1</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary btn-block" type="submit" style="height: 60px;">Sign Up Now</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> {% endcomment %}
+    </div>
+    <!-- Courses End -->
+
+
+    {% comment %} <!-- Team Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative mb-5">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Instructors</h6>
+                <h1 class="display-4">Meet Our Instructors</h1>
+            </div>
+            <div class="owl-carousel team-carousel position-relative" style="padding: 0 30px;">
+                <div class="team-item">
+                    <img class="img-fluid w-100" src="{% static 'img/team-1.jpg' %}" alt="">
+                    <div class="bg-light text-center p-4">
+                        <h5 class="mb-3">Instructor Name</h5>
+                        <p class="mb-2">Web Design & Development</p>
+                        <div class="d-flex justify-content-center">
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-item">
+                    <img class="img-fluid w-100" src="{% static 'img/team-2.jpg' %}" alt="">
+                    <div class="bg-light text-center p-4">
+                        <h5 class="mb-3">Instructor Name</h5>
+                        <p class="mb-2">Web Design & Development</p>
+                        <div class="d-flex justify-content-center">
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-item">
+                    <img class="img-fluid w-100" src="{% static 'img/team-3.jpg' %}" alt="">
+                    <div class="bg-light text-center p-4">
+                        <h5 class="mb-3">Instructor Name</h5>
+                        <p class="mb-2">Web Design & Development</p>
+                        <div class="d-flex justify-content-center">
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-item">
+                    <img class="img-fluid w-100" src="{% static 'img/team-4.jpg' %}" alt="">
+                    <div class="bg-light text-center p-4">
+                        <h5 class="mb-3">Instructor Name</h5>
+                        <p class="mb-2">Web Design & Development</p>
+                        <div class="d-flex justify-content-center">
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="mx-1 p-1" href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> {% endcomment %}
+    <!-- Team End -->
+
+
+    {% comment %} <!-- Testimonial Start -->
+    <div class="container-fluid bg-image py-5" style="margin: 90px 0;">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="section-title position-relative mb-4">
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Testimonial</h6>
+                        <h1 class="display-4">What Say Our Students</h1>
+                    </div>
+                    <p class="m-0">Dolor est dolores et nonumy sit labore dolores est sed rebum amet, justo duo ipsum sanctus dolore magna rebum sit et. Diam lorem ea sea at. Nonumy et at at sed justo est nonumy tempor. Vero sea ea eirmod, elitr ea amet diam ipsum at amet. Erat sed stet eos ipsum diam</p>
+                </div>
+                <div class="col-lg-7">
+                    <div class="owl-carousel testimonial-carousel">
+                        <div class="bg-white p-5">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <p>Sed et elitr ipsum labore dolor diam, ipsum duo vero sed sit est est ipsum eos clita est ipsum. Est nonumy tempor at kasd. Sed at dolor duo ut dolor, et justo erat dolor magna sed stet amet elitr duo lorem</p>
+                            <div class="d-flex flex-shrink-0 align-items-center mt-4">
+                                <img class="img-fluid mr-4" src="{% static 'img/testimonial-2.jpg' %}" alt="">
+                                <div>
+                                    <h5>Student Name</h5>
+                                    <span>Web Design</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-5">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <p>Sed et elitr ipsum labore dolor diam, ipsum duo vero sed sit est est ipsum eos clita est ipsum. Est nonumy tempor at kasd. Sed at dolor duo ut dolor, et justo erat dolor magna sed stet amet elitr duo lorem</p>
+                            <div class="d-flex flex-shrink-0 align-items-center mt-4">
+                                <img class="img-fluid mr-4" src="{% static 'img/testimonial-1.jpg' %}" alt="">
+                                <div>
+                                    <h5>Student Name</h5>
+                                    <span>Web Design</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial Start --> {% endcomment %}
+
+
+    <!-- Contact Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="bg-light d-flex flex-column justify-content-center px-5" style="height: 450px;">
+                        <div class="d-flex align-items-center mb-5">
+                            <div class="btn-icon bg-primary mr-2">
+                                <i class="fa fa-2x fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div class="mt-n1">
+                                <h4>Our Location</h4>
+                                <p class="m-0">1Block 10th, 9th Avenue, Mountain View Estate, <br>Sobi, Ilorin, Kwara State.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-5">
+                            <div class="btn-icon bg-secondary mr-2">
+                                <i class="fa fa-2x fa-phone-alt text-white"></i>
+                            </div>
+                            <div class="mt-n1">
+                                <h4>Call Us</h4>
+                                <p class="m-0">+2347067071427</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="btn-icon bg-warning mr-2 mb-3">
+                                <i class="fa fa-2x fa-envelope text-white"></i>
+                            </div>
+                            <div class="mt-n1">
+                                <h4>Email Us</h4>
+                                <p class="m-0" style="font-size:10px">heroesgroupofschool053@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="section-title position-relative mb-4">
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Need Help?</h6>
+                        <h1 class="display-4">Send Us A Message</h1>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm" method="POST" action="{% url 'MyHome' %}">
+                            {% csrf_token %}
+                            <div id="form-messages"></div> <!-- For success/error alerts -->
+
+                            <div class="row">
+                                <div class="col-6 form-group">
+                                    <input type="text" name="name" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-6 form-group">
+                                    <input type="email" name="email" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Your Email" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="subject" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Subject" required>
+                            </div>
+
+                            <div class="form-group">
+                                <textarea name="message" class="form-control border-top-0 border-right-0 border-left-0 p-0" rows="5" placeholder="Message" required></textarea>
+                            </div>
+
+                            <div>
+                                <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+
+                            <!-- jQuery (for AJAX) -->
+                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+{% include 'footer.html' %}
+
+ <script>
+$(document).ready(function(){
+    $('#contactForm').on('submit', function(e){
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: '{% url "MyHome" %}',
+            data: $(this).serialize(),
+            success: function(response){
+                $('#form-messages').html(
+                    '<div class="alert alert-success mt-3">Your message has been sent successfully!</div>'
+                );
+                $('#contactForm')[0].reset();  // clear the form
+            },
+            error: function(){
+                $('#form-messages').html(
+                    '<div class="alert alert-danger mt-3">Something went wrong. Please try again later.</div>'
+                );
+            }
+        });
+    });
+});
+</script>
+</body>
+
+</html>

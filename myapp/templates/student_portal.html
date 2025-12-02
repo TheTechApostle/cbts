@@ -1,0 +1,214 @@
+{% load django_browser_reload %}
+{% django_browser_reload_script %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Portal</title>
+<link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+/* Body & Typography */
+body {
+    background: linear-gradient(135deg, #f0f2f5, #e0e7ff);
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+h2, h4 {
+    font-weight: 600;
+}
+
+/* Course Cards */
+.course-card {
+    background: #fff;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+.course-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+.course-card h5 {
+    font-weight: 600;
+    color: #0d6efd;
+}
+.course-card p {
+    color: #555;
+}
+
+/* Exam Buttons */
+.exam-btn {
+    background: linear-gradient(90deg, #0d6efd, #00b4ff);
+    border: none;
+    font-weight: 500;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+.exam-btn:hover {
+    background: linear-gradient(90deg, #00b4ff, #0d6efd);
+    transform: scale(1.05);
+}
+.exam-btn.disabled, .exam-btn[disabled] {
+    background: #ccc !important;
+    cursor: not-allowed;
+}
+
+/* Scheduled Exams */
+.list-group-item {
+    border-radius: 12px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+.list-group-item:hover:not(.disabled) {
+    background: #e0f0ff;
+    transform: translateX(5px);
+}
+.list-group-item.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+.list-group-item .badge {
+    font-weight: 500;
+}
+
+/* Responsive Grid */
+.row.g-4 {
+    margin-top: 20px;
+}
+
+/* Header */
+.welcome-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+    {% include 'header.html' %}
+<div class="container py-5">
+    {% if user.is_authenticated %}
+                <a href="{% url 'logout_user' %}" class="nav-item nav-link text-white btn btn-danger float-right">
+                    Logout
+                  </a>
+                {% endif %}
+    <!-- Welcome Header -->
+    <div class="welcome-header">
+        <h2>Welcome, {{ student.full_name }}</h2>
+        <p class="text-muted">Explore your courses and upcoming exams below</p>
+    </div>
+
+    <!-- Courses Section -->
+    <h4 class="mb-3 text-secondary">Your Courses</h4>
+    <div class="row g-4">
+        {% for course in courses %}
+        <div class="col-md-4 col-sm-6">
+            <div class="card course-card p-3">
+                <div class="card-body d-flex flex-column justify-content-between h-100">
+                    <h5 class="card-title">{{ course.title }}</h5>
+                    <p class="card-text">{{ course.description|truncatechars:100 }}</p>
+
+                    {% for info in courses_info %}
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card course-card p-3">
+                                <div class="card-body d-flex flex-column justify-content-between h-100">
+                                    <h5 class="card-title">{{ info.course.title }}</h5>
+                                    <p class="card-text">{{ info.course.description|truncatechars:100 }}</p>
+
+                                    {% if info.scheduled_exam %}
+                                        {% if info.available %}
+                                            <a href="{% url 'take_exam' info.course.id %}" class="btn exam-btn mt-3 w-100">
+                                                Take Exam <i class="fas fa-arrow-right ms-2"></i>
+                                            </a>
+                                        {% else %}
+                                            <button class="btn exam-btn mt-3 w-100" disabled>
+                                                Not Yet Available <i class="fas fa-clock ms-2"></i>
+                                            </button>
+                                        {% endif %}
+                                    {% else %}
+                                        <button class="btn exam-btn mt-3 w-100" disabled>
+                                            No Exam Scheduled
+                                        </button>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted">You have not registered for any courses yet.</p>
+        {% endfor %}
+    </div>
+
+    <!-- Scheduled Exams -->
+    <h4 class="mt-5 mb-3 text-secondary">Scheduled Exams</h4>
+<div class="list-group shadow-sm rounded">
+    <p>Status = [{{ exam. }}]</p>
+    {% for exam in exams %}
+
+
+    
+    {% if exam.status == "ongoing" %}
+      <!-- ✅ Active (Clickable) Exam -->
+      <a href="{% url 'take_exam' exam.course_name.id %}" 
+         class="list-group-item list-group-item-action d-flex justify-content-between align-items-center border-success">
+        <div>
+          <i class="fas fa-file-alt me-2 text-success"></i>
+          <strong>{{ exam.exam.title }}</strong> - {{ exam.course_name.title }}
+          <div class="text-muted small">
+            Duration: {{ exam.duration_minutes }} mins | {{ exam.term }}
+          </div>
+        </div>
+        <span class="badge bg-success text-white rounded-pill">{{ exam.scheduled_date|date:"M d, Y" }}</span>
+      </a>
+
+    {% elif exam.status == "upcoming" %}
+      <!-- ⏳ Upcoming (Not clickable) -->
+      <div class="list-group-item d-flex justify-content-between align-items-center border-info">
+        <div>
+          <i class="fas fa-clock me-2 text-info"></i>
+          {{ exam.exam.title }} - {{ exam.course_name.title }}
+          <div class="text-muted small">
+            Starts {{ exam.scheduled_date|date:"M d, Y" }} at {{ exam.start_time|time:"H:i" }}
+          </div>
+        </div>
+        <span class="badge bg-info text-white rounded-pill">Upcoming</span>
+      </div>
+
+    {% else %}
+      <!-- ❌ Completed (Not clickable) -->
+      <div class="list-group-item disabled d-flex justify-content-between align-items-center border-secondary">
+        <div>
+          <i class="fas fa-check-circle me-2 text-secondary"></i>
+          {{ exam.exam.title }} - {{ exam.course_name.title }}
+          <div class="text-muted small">
+            Completed on {{ exam.scheduled_date|date:"M d, Y" }}
+          </div>
+        </div>
+        <span class="badge bg-secondary rounded-pill">Completed</span>
+      </div>
+
+    {% endif %}
+  
+  {% empty %}
+    <p class="text-muted text-center py-3">No exams scheduled yet.</p>
+  {% endfor %}
+</div>
+
+
+</div>
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+{% include  'footer.html' %}
+</body>
+</html>

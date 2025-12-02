@@ -1,0 +1,8 @@
+pymysql
+django
+django-suit
+django-widget-tweaks
+django-jazzmin
+Pillow
+transformers
+django-browser-reload
